@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1099439590428",
+    "project_id": "react-native-task-ed61e",
+    "storage_bucket": "react-native-task-ed61e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1099439590428:android:cdad0d73ba6244156b23d9",
+        "android_client_info": {
+          "package_name": "com.reactnativetask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1099439590428-vem9pa1l9boe7mstr4mk15e65rt2sg8c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtoxfhSuBpKfOyYCZLsZJkmgGRgh7KFyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1099439590428-vem9pa1l9boe7mstr4mk15e65rt2sg8c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
