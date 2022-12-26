@@ -1,5 +1,5 @@
 import { StatusBar, StyleSheet, ActivityIndicator, RefreshControl } from 'react-native'
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useRef, useEffect, useState, useCallback } from 'react'
 import { fetchTrendingMedia, fetchSearchMovies } from '../redux/asyncThunks'
 import { useDispatch, useSelector } from 'react-redux'
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -13,6 +13,7 @@ const SearchScreen = () => {
   const dispatch = useDispatch()
   const [searchText, setSearchText] = useState("")
   const mediaReducer = useSelector(s => s.media)
+  const searchRef = useRef(null);
 
   useEffect(() => {
     dispatch(fetchTrendingMedia({ mediaType: 'movie', timeWindow: 'week', page: 1, indicatorType: 'initial' }))
@@ -40,7 +41,11 @@ const SearchScreen = () => {
     }
   }
 
-  const onRefresh = () => dispatch(fetchTrendingMedia({ mediaType: 'movie', timeWindow: 'week', page: 1, indicatorType: 'refresh' }))
+  const onRefresh = () => {
+    searchRef.current?.clear()
+    setSearchText('')
+    dispatch(fetchTrendingMedia({ mediaType: 'movie', timeWindow: 'week', page: 1, indicatorType: 'refresh' }))
+  }
 
   const debounceChangeText = useCallback(debounce((text) => {
     setSearchText(text)
@@ -61,6 +66,7 @@ const SearchScreen = () => {
       <SafeAreaView style={styles.container} >
         <Header leftIcon="arrow-left" onPressleft={goBack} isLogout={true} title={"FilmKu"} />
         <CustomInput
+          ref={searchRef}
           placeholder={'Search movie...'}
           onChangeText={debounceChangeText}
         />
